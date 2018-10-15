@@ -51,7 +51,7 @@ int* sieve_of_eratosthenes(const int max)
 			{
 				if(primes[j]>limit)
 				{
-					primes[founded++] = i; std::cout << i;
+					primes[founded++] = i;
 					break;
 				} 	
 			}		

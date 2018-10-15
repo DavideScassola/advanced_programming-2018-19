@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 template<typename T>
 int get_value()
@@ -14,23 +15,23 @@ int get_value()
 
 
 template<typename T>
-T* ask_vector(const int length)
+std::vector<T> ask_vector(const int length)
 {
-	T* v{new T[length]};
+	std::vector<T> v;
 	int counter{0};
 	while(counter<length)
         {
 		std::cout << counter << ":";
-		v[counter++]=get_value<T>();
-        }
+		v.push_back(get_value<T>());
+		counter++;
 
 	return v;
 }
 
 template<typename T>
-void print_reverse(T* vector, const int length)
+void print_reverse(std::vector<T> vector)
 {
-	for(int i=length-1; i>=0; i--)
+	for(int i=vector.size()-1; i>=0; i--)
 	{
 		std::cout << vector[i] << " ";
 	}
@@ -41,23 +42,20 @@ int main()
 	std::cout << "insert the double vector dimension: ";
 	int length = get_value<int>();
 
-	double* d_vector;
+	std::vector<double> d_vector;
 	d_vector = ask_vector<double>(length);
 
 	std::cout << "\n reverse: ";
-	print_reverse(d_vector, length);
-	delete[] d_vector;
+	print_reverse(d_vector);
 
-
-	std::cout << "insert the int vector dimension: ";
+	std::cout << "\ninsert the int vector dimension: ";
 	length = get_value<int>();
 
-	int* i_vector;
+	std::vector<int> i_vector;
 	i_vector = ask_vector<int>(length);
 
 	std::cout << "\n reverse: ";
-	print_reverse(i_vector, length);
-	delete[] i_vector;
+	print_reverse(i_vector);
 
 	return 0;
 }
