@@ -23,43 +23,37 @@ int get_value()
 
 int* sieve_of_eratosthenes(const int max)
 {
-	size_t size = 8;
-	int* primes{new int[size]};
-	int founded = 0;
+	bool* isPrime{new bool[max+1]}; //grandezza iniziale arbitraria
 
-	if(max>=2)
+	for( int i{0}; i<=max; i++)  isPrime[i] = true;
+
+	int limit = sqrt(max);
+	int prime_counter{max}; //number of primes we're going to find
+
+	for(int n{2}; n<=limit; n++)
 	{
-		primes[founded++] = 2;
-		
-		for(unsigned int i{3}; i<=max; i++)
-		{
-			if(founded>=size) //resizing of the primes vector
-			{	
-				size = size*2;
-				int* new_vector{new int[size]};
-				for(unsigned int i{0}; i<size/2; i++)  //copyng
-				new_vector[i] = primes[i];
-
-				delete[] primes;
-				primes = new_vector;	
-				
-			}
-	
-			int limit = sqrt(i);
-
-			for(unsigned int j{0}; i%primes[j]!=0; j++)
+		if(isPrime[n])
+		{	
+			for(int i{n*n};i<=max;i=i+n)
 			{
-				if(primes[j]>limit)
-				{
-					primes[founded++] = i;
-					break;
-				} 	
-			}		
-		}	
+					isPrime[i] = false;
+			}
+		}
+	}
+	
+	int* primes{new int[max/2+1]};
 
+	int counter{0};
+
+	for(int i{2}; i<=max; i++)
+	{
+		if(isPrime[i])
+		{	
+			primes[counter++] = i;
+		}
 	}
 
-	primes[founded]=-1;
+	primes[counter]=-1;
 
 	return primes;
 }

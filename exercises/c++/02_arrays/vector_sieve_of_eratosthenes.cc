@@ -23,39 +23,43 @@ int get_value()
    return i;
 }
 
-std::vector<unsigned int> sieve_of_eratosthenes(const unsigned int max)
+std::vector<int> sieve_of_eratosthenes(const unsigned int max)
 {
-	size_t size = 8;
-	std::vector<unsigned int> primes;
+	std::vector<bool> isPrime;
+	std::vector<int> primes;
 
-	if(max>=2)
+	for(int i{0}; i<=max; i++)  isPrime.push_back(true);
+
+	int limit = sqrt(max);
+
+
+	for(int n{2}; n<=limit; n++)
 	{
-		primes.push_back(2);
-		
-		for(unsigned int i{3}; i<=max; i++)
+		if(isPrime[n])
 		{
-	
-			unsigned int limit = sqrt(i); //upper bound for divisibility checks
-
-			for(unsigned int j{0}; i%primes[j]!=0; j++)
+			for(int i{n*n};i<=max;i = i + n)
 			{
-				if(primes[j]>limit)
-				{
-					primes.push_back(i);
-					break;
-				} 	
-			}		
-		}	
+					isPrime[i] = false;
+			}
+		}
+	}
 
+	for(int i{2}; i<=max; i++)
+	{
+		if(isPrime[i])
+		{
+			 primes.push_back(i);
+		}
 	}
 
 	return primes;
 }
 
+
 int main()
 {
 	std::cout << "insert the upper bound: ";
 	unsigned int upper_bound = get_value<unsigned int>();
-	std::vector<unsigned int> primes = sieve_of_eratosthenes(upper_bound);
+	std::vector<int> primes = sieve_of_eratosthenes(upper_bound);
 	print_vector(primes);
 }
