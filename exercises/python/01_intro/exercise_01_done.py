@@ -65,20 +65,12 @@ def compute_factorial(int_val):
     ########################
 
 
-def is_prime(int_val):
-    '''
-    returns True if int_val is prime, False otherwise
-    '''
-    ########################
-    return not (True in [i*j==int_val for i in range(2,int_val) for j in range(2,int_val)])
-    ########################
-
 def is_prime(n): 
     '''
     returns True if int_val is prime, False otherwise
     '''
     ########################
-    return compute_factorial(n-2)%n == 1 #Wilson theorem
+    return ((compute_factorial(n-1))**2)%n!=0
     ##############compute_factorial##########
 
         
