@@ -5,7 +5,7 @@ def is_palindrome(string_var):
     '''
     ret = None
     ########################
-    # code here
+    return len(string_var)==1 ? True : string_var[0]==string_var[-1] & is_palindrome(string_var[1:-1])
     ########################
     return ret 
 
