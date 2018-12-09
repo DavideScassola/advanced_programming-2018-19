@@ -70,7 +70,7 @@ def is_prime(n):
     returns True if int_val is prime, False otherwise
     '''
     ########################
-    return ((compute_factorial(n-1))*6)%n!=0
+    return ((compute_factorial(n-1))**2)%n!=0
     ##############compute_factorial##########
 
         
