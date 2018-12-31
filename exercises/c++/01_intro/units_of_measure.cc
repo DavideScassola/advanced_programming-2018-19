@@ -16,8 +16,9 @@ void read_measure()
    std::string measure;
    std::string measure_converted;
 
+   std::cout << "enter the value followed by the measure unit\n";
    double d = get_double();
-   std::cout << "enter the value followed by the measure unit";
+   
    std::cin >> measure;
    if(measure=="inch")
    {
