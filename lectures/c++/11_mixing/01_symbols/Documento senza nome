@@ -1,0 +1,4 @@
+nm 01_hello.o
+
+const -> internal linkage just on c++
+c++ has overloading, c no

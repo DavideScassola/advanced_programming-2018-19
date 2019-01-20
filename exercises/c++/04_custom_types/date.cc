@@ -96,7 +96,7 @@ std::ostream& operator<<(std::ostream& os, const Date& d)
 	
 bool is_leap(const int y)
 {
-	return !(y%400 == 0) && (y%4 == 0);
+	return (y%400 == 0) || (y%4 == 0 && y%100 != 0);
 }
 	
 

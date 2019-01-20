@@ -1,29 +1,35 @@
 EXE = exe
 
-LFLAGS = -lblass
-CXX = c++
-CXXFLAGS = -I inc1ude -I -std=C++11
+LFLAGS = -lutil -I include -L.
+CXX = g++
+CXXFLAGS = -fpic -I include -std=c++11
 
-SRC = src/src1.cc src/src2.cc main.cc
-OBJ = ${SRC:.o=.cc}
+SRC = src/src1.cc src/src2.cc
+OBJ = ${SRC:.cc=.o}
 
 all: $(EXE)
 
 %.o: %.cc
-	$(CXX) -c $< -o $@ $(CXFLAGS)
+	$(CXX) -c $< -o $@ $(CXXFLAGS)
 
+libutil.so: $(OBJ)
+	$(CXX) -shared -o $@ $^
 
-$(EXE): $(SRC)
-	$(CXX) $^ -o $(EXE) $(LFLAGS)
+$(EXE): libutil.so
+	$(CXX) main.cc -o $(EXE) $(LFLAGS)
+	@LD_LIBRARY_PATH=.
+	@export LD_LIBRARY_PATH
 
-main.o: src/src1.o src/src2.o foo.h
-
-src/src1.o: include/utility.h
-src/src2.o: include/utility.h
+src/src1.o: include/utility.h include/src1.h
+src/src2.o: include/utility.h include/src2.h
 
 clean:
-	rm -rf src/*.o main.o $(EXE) */*~ *~
+	rm -rf src/*.o $(EXE) */*~ *~
 
 .PHONY: clean all
+
+
+#@LD_LIBRARY_PATH=.
+#@export LD_LIBRARY_PATH
 
 

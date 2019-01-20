@@ -1,0 +1,15 @@
+
+	
+	gcc -c hello.c -> hello.o 	|	  g++ -c main.cpp .std=c++11	-> manin.o	
+
+	
+	g++ hello.o main.o -o exe, use the compiler of the main.
+
+
+
+forse extern c for compatibility with c
+
+then you can compile with g++
+
+
+

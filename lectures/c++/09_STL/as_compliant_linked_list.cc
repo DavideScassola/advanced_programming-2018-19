@@ -51,7 +51,6 @@ class List {
   class ConstIterator;
   Iterator begin() { return Iterator{head.get()}; }
   Iterator end() { return Iterator{nullptr}; }
-
   ConstIterator begin() const { return ConstIterator{head.get()}; }
   ConstIterator end() const { return ConstIterator{nullptr}; }
 

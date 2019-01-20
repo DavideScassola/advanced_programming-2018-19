@@ -1,0 +1,4 @@
+const implies internal linkage (const->static) own copy
+
+static = internal linkage in global var 
+

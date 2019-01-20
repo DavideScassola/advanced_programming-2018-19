@@ -1,7 +1,8 @@
 #include <iostream>
 #include "utility.h"
+#include <src1.h>
 
-std::string greetings(){
+static inline std::string greetings(){
   std::string s{"Welcome\n"};
   return s;
 }
